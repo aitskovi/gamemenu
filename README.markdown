@@ -3,12 +3,14 @@ GameMenu
 
 Game Menu provides a base class for creating an in-game menu system for iPad games. The base class provides navigation and tap outside to resume functionality.
 
+Running the project shows a sample menu.
+
 Instructions
 ============
 
 ### Menu Page (GMPage)
 
-To create a menu page simply sub-class GMPage. You can create your page either programatically or using a .xib file.
+To create a menu page simply sub-class GMPage. You can create your page either programatically or using a .xib file.  
 To show the menu page follow the instructions in the game menu section.
 
 ### Game Menu (GMMenu)
