@@ -1,9 +1,11 @@
-    //
+//
 //  GMMenu.m
 //  gamemenu
 //
+//	Base for the menuing system.
+//	Provides a replacement navigation system for iPad menus
+//
 //  Created by Avi Itskovich on 10-09-14.
-//  Copyright 2010 Bloq Software. All rights reserved.
 //
 
 #import "GMMenu.h"

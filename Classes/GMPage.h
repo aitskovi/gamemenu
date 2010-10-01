@@ -2,8 +2,10 @@
 //  GMPage.h
 //  gamemenu
 //
+//	Base for menu pages.
+//	Provides a base class for menu pages with already created back action
+//
 //  Created by Avi Itskovich on 10-09-14.
-//  Copyright 2010 Bloq Software. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -26,6 +28,5 @@
 @required
 - (void)back;
 - (void)navigateToMenuPage:(GMPage *)menu;
-
 @end
 

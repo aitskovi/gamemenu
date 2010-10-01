@@ -3,38 +3,13 @@
 //  gamemenu
 //
 //  Created by Avi Itskovich on 10-09-14.
-//  Copyright Bloq Software 2010. All rights reserved.
-//
 
 #import "gamemenuViewController.h"
 #import "TestMenuMainPage.h"
 
 @implementation gamemenuViewController
 
-
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
+// Show the menu when the button is pressed
 - (IBAction)showMenu {
 	TestMenuMainPage *menuPage = [[TestMenuMainPage alloc] init];
 	menu = [[GMMenu alloc] initWithRootMenu:menuPage];
@@ -43,7 +18,9 @@
 	[menuPage release];
 }
 
+// Used to hide the menu
 - (void)resume {
+	// Hide the menu
 	[menu.view removeFromSuperview];
 	[menu release];
 	menu = nil;

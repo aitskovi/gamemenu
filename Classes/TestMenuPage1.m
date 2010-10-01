@@ -3,7 +3,6 @@
 //  gamemenu
 //
 //  Created by Avi Itskovich on 10-09-15.
-//  Copyright 2010 Bloq Software. All rights reserved.
 //
 
 #import "TestMenuPage1.h"
@@ -11,11 +10,17 @@
 
 @implementation TestMenuPage1
 
+#pragma mark -
+#pragma mark Initialization
 
 - (id)init {
 	return [self initWithNibName:@"TestMenuPage1" bundle:[NSBundle mainBundle]];
 }
 
+#pragma mark -
+#pragma mark Navigation
+
+// Linking the back action to the button
 - (IBAction)back {
 	[super back];
 }
@@ -25,21 +30,8 @@
     return YES;
 }
 
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
+#pragma mark -
+#pragma mark  Memory Management
 
 - (void)dealloc {
     [super dealloc];
