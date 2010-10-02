@@ -11,6 +11,11 @@
 #import <UIKit/UIKit.h>
 #import "GMPage.h"
 
+#define GMSLIDEUP 0
+#define GMSLIDEDOWN 1
+#define GMSLIDELEFT 2
+#define GMSLIDERIGHT 3
+
 @protocol GMMenuDelegate
 
 @required
@@ -22,12 +27,19 @@
 @interface GMMenu : UIViewController <GMPageDelegate, UIGestureRecognizerDelegate> {
 	id <GMMenuDelegate> delegate;
 	NSMutableArray *stack;
+	
+	// Used for syncing animations
+	int menuAnimation;
 }
 
 @property (nonatomic, assign) id delegate;
 
 // Initialization
 - (id)initWithRootMenu:(GMPage *)menuPage;
+
+// Menu Appearance/Dissapearance
+- (void)showMenuInView:(UIView *)view animation:(int)animation;
+- (void)hideMenuWithAnimation:(int)animation;
 
 // Navigation
 - (void)navigateToMenuPage:(GMPage *)menuPage;

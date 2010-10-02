@@ -14,14 +14,14 @@
 	TestMenuMainPage *menuPage = [[TestMenuMainPage alloc] init];
 	menu = [[GMMenu alloc] initWithRootMenu:menuPage];
 	menu.delegate = self;
-	[self.view addSubview:menu.view];
+	[menu showMenuInView:self.view animation:GMSLIDEDOWN];
 	[menuPage release];
 }
 
 // Used to hide the menu
 - (void)resume {
 	// Hide the menu
-	[menu.view removeFromSuperview];
+	[menu hideMenuWithAnimation:GMSLIDEUP];
 	[menu release];
 	menu = nil;
 }

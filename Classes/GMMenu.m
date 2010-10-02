@@ -43,6 +43,79 @@
 }
 
 #pragma mark -
+#pragma mark Menu Appearance
+
+- (void)showMenuInView:(UIView *)backgroundView animation:(int)animation {
+	CGPoint menuPosition;
+
+	switch (animation) {
+		case GMSLIDEUP:
+			menuPosition = CGPointMake(self.view.frame.origin.x, backgroundView.frame.size.height);
+			break;
+		case GMSLIDEDOWN:
+			menuPosition = CGPointMake(self.view.frame.origin.x,-self.view.frame.size.height);
+			break;
+		case GMSLIDELEFT:
+			menuPosition = CGPointMake(backgroundView.frame.size.width,self.view.frame.origin.y);
+			break;
+		case GMSLIDERIGHT:
+			menuPosition = CGPointMake(-self.view.frame.size.width, self.view.frame.origin.y);
+			break;
+		default:
+			menuPosition = self.view.frame.origin;
+			break;
+	}
+	
+	self.view.frame = CGRectMake(menuPosition.x, menuPosition.y, self.view.frame.size.width, self.view.frame.size.height);
+	self.view.userInteractionEnabled = NO;
+	[backgroundView addSubview: self.view];
+	
+	[UIView beginAnimations:@"Show Menu" context:nil];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(menuDidAppear)];
+	self.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+	[UIView commitAnimations];
+}
+
+- (void)hideMenuWithAnimation:(int)animation {
+	CGPoint menuPosition;
+	
+	switch (animation) {
+		case GMSLIDEUP:
+			menuPosition = CGPointMake(self.view.frame.origin.x, self.view.superview.frame.size.height);
+			break;
+		case GMSLIDEDOWN:
+			menuPosition = CGPointMake(self.view.frame.origin.x,-self.view.frame.size.height);
+			break;
+		case GMSLIDELEFT:
+			menuPosition = CGPointMake(self.view.superview.frame.size.width,self.view.frame.origin.y);
+			break;
+		case GMSLIDERIGHT:
+			menuPosition = CGPointMake(-self.view.frame.size.width, self.view.frame.origin.y);
+			break;
+		default:
+			menuPosition = self.view.frame.origin;
+			break;
+	}
+	
+	[UIView beginAnimations:@"Hide Menu" context:nil];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(menuDidDissapear)];
+	self.view.frame = CGRectMake(menuPosition.x, menuPosition.y, self.view.frame.size.width, self.view.frame.size.height);
+	[UIView commitAnimations];
+}
+
+- (void)menuDidAppear {
+	self.view.userInteractionEnabled = YES;
+}
+
+- (void)menuDidDissapear {
+	[self.view removeFromSuperview];
+}
+
+#pragma mark -
 #pragma mark Navigation
 
 - (void)navigateToMenuPage:(GMPage *)menu {
